@@ -9,6 +9,8 @@ services:
       ENABLE_WRITING_HANDLERS: 'false'
     ports:
       - "9000:9000"
+    networks:
+      - app-network
     depends_on:
       - mongo
 
@@ -17,6 +19,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: admin
       MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - app-network
 
 
   mongo-express:
@@ -28,6 +32,8 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongo
     ports:
       - "8081:8081"
+    networks:
+      - app-network
     depends_on:
       - mongo
 
