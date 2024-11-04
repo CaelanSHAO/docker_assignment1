@@ -1,6 +1,6 @@
-services:
+version: '3'
 
-  networks:
+networks:
     mongo-network:
       external: true
       name: 'mongo-net'
@@ -10,6 +10,8 @@ services:
     api-network:
       external: true
       name: 'api-net'
+
+services:
 
   movies-api:
     image: doconnor/movies-api:1.0
@@ -36,7 +38,7 @@ services:
       - mongo-network
       - api-network
     volumes:    
-      - ./data:/data/db 
+      - ./seed:/data/db 
 
 
   mongo-express:
