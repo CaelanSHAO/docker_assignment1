@@ -7,8 +7,15 @@ services:
     networks:
       - backend
 
-  api:
-    image: doconnor/movies-api:1.0
-    container_name: movies-api
+mongo-express:
+    image: mongo-express:1.0-20-alpine3.19
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=password
+      - ME_CONFIG_MONGODB_SERVER=mongo
+    networks:
+      - backend
     ports:
-      - '9000:9000'
+      - "8081:8081"
+
+
