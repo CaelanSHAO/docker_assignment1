@@ -1,4 +1,11 @@
 services:
+  mongo:
+    image: mongo:8.0-rc
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      - backend
 
   api:
     image: doconnor/movies-api:1.0
